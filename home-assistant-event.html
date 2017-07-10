@@ -1,0 +1,54 @@
+<script type="text/javascript">
+    RED.nodes.registerType('event',{
+        category: 'HomeAssistant',
+        paletteName: 'Event',
+        color: '#03A9F4',
+        defaults: {
+            name: {value:""},
+            hass: {value:"", type:"home-assistant-config"},
+            event: {value:"state_changed", "required": true},
+            filterKey: {value:"", "required": false},
+            filterValue: {value:"*", "required": false}
+        },
+        inputs:0,
+        outputs:1,
+        icon: "ha.png",
+        label: function() {
+            return this.name||this.entity ? "Event: " + this.entity : "Event";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="event">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-hass"><i class="icon-tag"></i> Config</label>
+        <input type="text" id="node-input-hass">
+    </div>
+    <div class="form-row">
+        <label for="node-input-event"><i class="icon-tag"></i> Event</label>
+        <input type="text" id="node-input-event">
+    </div>
+    <div class="form-row">
+        <label for="node-input-filterKey"><i class="icon-tag"></i> Filter By</label>
+        event.data.<input type="text" id="node-input-filterKey" style="width: 30%;" placeholder="entity_id">
+    </div>
+    <div class="form-row">
+        <label for="node-input-filterValue"><i class="icon-tag"></i> Filter Value</label>
+        <input type="text" id="node-input-filterValue" placeholder="*">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="event">
+    <p>Home Assistant event input node. Can be used to capture Home Assistant events. Simply set the Home Assistant server configuration and the entity id you want to monitor. Wildcard '*' character is supported.</p>
+    <p>Example entity ids:</p>
+    <ul>
+      <li>light.kitchen</i>
+      <li>light.room-*</i>
+      <li>light.*</i>
+      <li>*</i>
+    </ul>
+</script>

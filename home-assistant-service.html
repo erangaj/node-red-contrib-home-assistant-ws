@@ -1,0 +1,55 @@
+<script type="text/javascript">
+    RED.nodes.registerType('service', {
+        category: 'HomeAssistant',
+        paletteName: 'Service',
+        color: '#03A9F4',
+        defaults: {
+            name: {value: ""},
+            hass: {value: "", type: "home-assistant-config"},
+            service: {value: "", "required": false}
+        },
+        inputs: 1,
+        outputs: 0,
+        icon: "ha.png",
+        label: function () {
+            return this.name || this.service ? "Service: " + this.service : "Service";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="service">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-hass"><i class="icon-tag"></i> Config</label>
+        <input type="text" id="node-input-hass">
+    </div>
+    <div class="form-row">
+        <label for="node-input-service"><i class="icon-tag"></i> Service</label>
+        <input type="text" id="node-input-service" placeholder="Service">
+    </div>
+
+</script>
+
+<script type="text/x-red" data-help-name="service">
+    <p>Use this node to call a Home Assistant service. The Service configured in the can be overridden by msg.service. The payload must contain the service data including entity_id (if required).</p>
+    <p>Example service names and payloads:</p>
+    <table>
+        <thead>
+            <tr>
+                <td><b>Service</b></td>
+                <td><b>Payload</b></td>
+            </tr>
+        </thead>
+        <tr>
+            <td>light.turn_on</td>
+            <td>{ "entity_id": "light.study", "brightness":60 }</td>
+        </tr>
+        <tr>
+            <td>notify.default</td>
+            <td>{ "message":"Hello" }</td>
+        </tr>
+    </table>
+</script>

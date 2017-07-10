@@ -1,0 +1,44 @@
+<script type="text/javascript">
+    RED.nodes.registerType('simple-event',{
+        category: 'HomeAssistant',
+        paletteName: 'Simple Event',
+        color: '#03A9F4',
+        defaults: {
+            name: {value:""},
+            hass: {value:"", type:"home-assistant-config"},
+            entity: {value:"", "required": true}
+        },
+        inputs:0,
+        outputs:1,
+        icon: "ha.png",
+        label: function() {
+            return this.name||this.entity ? "Simple Event: " + this.entity : "Simple Event";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="simple-event">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-hass"><i class="icon-tag"></i> Config</label>
+        <input type="text" id="node-input-hass">
+    </div>
+    <div class="form-row">
+        <label for="node-input-entity"><i class="icon-tag"></i> Entity ID</label>
+        <input type="text" id="node-input-entity" placeholder="Entity ID">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="simple-event">
+    <p>Home Assistant Simple Event input node. Can be used to capture Home Assistant <b>State Change Events</b>. Simply set the Home Assistant server configuration and the entity id you want to monitor. Wildcard '*' character is supported.</p>
+    <p>Example entity ids:</p>
+    <ul>
+      <li>light.kitchen</i>
+      <li>light.room-*</i>
+      <li>light.*</i>
+      <li>*</i>
+    </ul>
+</script>

@@ -1,0 +1,45 @@
+<script type="text/javascript">
+    RED.nodes.registerType('state',{
+        category: 'HomeAssistant',
+        paletteName: 'State',
+        color: '#03A9F4',
+        defaults: {
+            name: {value:""},
+            hass: {value:"", type:"home-assistant-config"},
+            entity: {value:"*", "required": false}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "ha.png",
+        label: function() {
+            return this.name|| this.entity ? "State: " + this.entity : "State";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="state">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-hass"><i class="icon-tag"></i> Config</label>
+        <input type="text" id="node-input-hass">
+    </div>
+    <div class="form-row">
+        <label for="node-input-entity"><i class="icon-tag"></i> Entity ID</label>
+        <input type="text" id="node-input-entity" placeholder="Entity ID">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="state">
+    <p>Use Home Assistant State node to get the current statues of entities. The Entity ID configured in the can be overridden by msg.entity_id. Wildcard '*' character is supported.</p>
+    <p>Example entity ids:</p>
+    <ul>
+      <li>light.kitchen</i>
+      <li>light.room-*</i>
+      <li>light.*</i>
+      <li>*</i>
+    </ul>
+    <p>If '*' is used in the entity_id, an array of statuses of all the matching entities will be returned instead of a single status object.</p>
+</script>

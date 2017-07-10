@@ -1,0 +1,42 @@
+<script type="text/javascript">
+    RED.nodes.registerType('home-assistant-config',{
+        category: 'config',
+        defaults: {
+            name: {value:""},
+            host: {value:"localhost"},
+            port: {value: 8123},
+            ssl: {value: false},
+            entity: {value:"", "required": true}
+        },
+        credentials: {
+            password: {type:"password"}
+        },
+        icon: "ha.png",
+        label: function() {
+            return this.host+":"+this.port;
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="home-assistant-config">
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="icon-bookmark"></i> Name</label>
+        <input type="text" id="node-config-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-host"><i class="icon-bookmark"></i> Host</label>
+        <input type="text" id="node-config-input-host" placeholder="localhost">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-port"><i class="icon-bookmark"></i> Port</label>
+        <input type="number" id="node-config-input-port" min="1" max="65535" placeholder="8123">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-ssl"><i class="icon-bookmark"></i> SSL</label>
+        <input type="checkbox" id="node-config-input-ssl" placeholder="false">
+    </div>
+     <div class="form-row">
+         <label for="node-config-input-password"><i class="icon-bookmark"></i> Password</label>
+         <input type="password" id="node-config-input-password">
+     </div>
+</script>

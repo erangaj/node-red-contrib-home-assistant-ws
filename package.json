@@ -1,0 +1,36 @@
+{
+  "name": "node-red-contrib-home-assistant-ws",
+  "version": "0.0.1",
+  "description": "Node Red integration with Home Assistant through websockets",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/erangaj/node-red-contrib-home-assistant-ws.git"
+  },
+  "keywords": [
+    "node-red",
+    "home assistant",
+    "iot",
+    "websockets"
+  ],
+  "author": "Eranga J <erangaj@gmail.com>",
+  "license": "Apache",
+  "bugs": {
+    "url": "https://github.com/erangaj/node-red-contrib-home-assistant-ws/issues"
+  },
+  "homepage": "https://eranga.org",
+  "dependencies": {
+    "ws": "^1.1.4"
+  },
+  "node-red": {
+    "nodes": {
+      "simple-event": "home-assistant-simple-event.js",
+      "event": "home-assistant-event.js",
+      "state": "home-assistant-state.js",
+      "service": "home-assistant-service.js",
+      "home-assistant-config": "home-assistant-config.js"
+    }
+  }
+}
