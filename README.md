@@ -13,3 +13,12 @@ Gets the current state of an antity or multiple entities. (Example: Get status o
 
 ## Service node
 Executes a Home Assistant service. (Examples: Turn on a switch, Set Nest thermostat temperature)
+
+## Installation
+
+Assuming Node-RED is alrady up and running:
+```shell
+$ cd ~/.node-red
+$ npm install node-red-contrib-home-assistant-ws
+restart node-red
+```
