@@ -18,7 +18,8 @@ module.exports = function(RED) {
         node.closing = false;
 
         function connect() {
-            var socket = new ws( node.ssl?"wss":"ws" + "://" + node.host + ":" + node.port + "/api/websocket");
+            var url = (node.ssl ? "wss" : "ws") + "://" + node.host + ":" + node.port + "/api/websocket";
+            var socket = new ws(url);
             node.server = socket;
             socket.setMaxListeners(100);
 
